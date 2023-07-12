@@ -1,0 +1,23 @@
+.progress-bar {
+    height: 25px;
+    position: relative;
+    z-index: 1;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    display: block;
+  }
+.progress {
+    height: 100%;
+    display: relative;
+}
+.progress-label {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    line-height: 25px;
+    font-size: 0.75em;
+    color: #eee;
+    display: inline-block;
+    font-weight: 700;
+}

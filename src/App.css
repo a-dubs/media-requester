@@ -1,38 +1,131 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200,300,400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.Toastify {
+    /* Add any desired styles for Toastify component here */
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.loading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.downloads-display-section {
+    margin-bottom: 20px;
+}
+
+/* ///////////////////////////////////// */
+/* .media-display {
+    outline: 1px solid #ccc;
+    background-color: #f7f7f7;
+    padding: 10px;
+    margin-bottom: 20px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .media-display h2 {
+    margin-bottom: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .media-display h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
   }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .container p {
+    margin: 5px 0;
+  }
+  
+  .container .column {
+    flex-basis: 50%;
+    padding: 10px;
+  }
+  
+  .container .column p {
+    margin: 5px 0;
+  }
+  
+  @media screen and (max-width: 600px) {
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+    }
+  } */
+.centered-text {
+    text-align: center;
+    width: 100%;
 }
