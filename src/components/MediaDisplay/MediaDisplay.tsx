@@ -1,6 +1,5 @@
-import { parse } from 'path';
 import React from 'react';
-import { Media, MediaInfo, MediaDownloadInfo } from '../../interfaces';
+import { MediaDownloadInfo } from '../../interfaces';
 import ProgressBar from '../ProgressBar/ProgressBar';
 interface MediaDisplayProps {
   mediaDownloadInfo: MediaDownloadInfo
