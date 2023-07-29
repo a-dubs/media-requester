@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { MediaRequest } from '../../interfaces';
-
+import { QBTMediaRequest } from '../../types/qbt';
+import './MediaForm.css'
 
 interface MediaFormProps {
-  onSubmit: (mediaRequest: MediaRequest) => void;
+  onSubmit: (mediaRequest: QBTMediaRequest) => void;
   query: string;
   setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -29,7 +29,7 @@ const MediaForm: React.FC<MediaFormProps> = ({ onSubmit, query, setQuery }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const mediaRequest: MediaRequest = {
+    const mediaRequest: QBTMediaRequest = {
       bestTorrentBy,
       minSeeders,
       minResolution,
@@ -41,15 +41,15 @@ const MediaForm: React.FC<MediaFormProps> = ({ onSubmit, query, setQuery }) => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="media-form" onSubmit={handleSubmit}>
       <div className="search-section">
-        <h3 className="label">Enter Movie Name (and year if possible)</h3>
+        <p className="label"><strong>Enter Movie Name (and year if possible)</strong></p>
         <input type="text" value={query} onChange={e => setQuery(e.target.value)} />
       </div>
-      <div>
-        <div>
+      <div className='input-select-area'>
+        <div className='input-select-conatiner'>
           <label><strong>
-            
+          Selection Priority  
           </strong></label>
           <label>
             <input
@@ -79,19 +79,7 @@ const MediaForm: React.FC<MediaFormProps> = ({ onSubmit, query, setQuery }) => {
             Select By Largest File Size
           </label>
         </div>
-
-        <div>
-          <label>
-            Minimum Seeders:
-            <input
-              type="number"
-              value={minSeeders}
-              onChange={handleMinSeedersChange}
-            />
-          </label>
-        </div>
-
-        <div>
+        <div className='input-select-conatiner'>
           <label><strong>
             Minimum Resolution:
           </strong></label>
@@ -135,8 +123,23 @@ const MediaForm: React.FC<MediaFormProps> = ({ onSubmit, query, setQuery }) => {
           </div>
         </div>
       </div>
+      
+        <br></br>
+        <div className='text-input-container'>
+            <label><strong>Minimum Seeders:</strong></label>
+          <input
+              id='asdf'
+              type="number"
+              value={minSeeders}
+              onChange={handleMinSeedersChange}
+            />
+          
+        </div>
 
-      <button type="submit">Request Media</button>
+
+
+      <button className='media-form-button' type="submit">Request Media</button>
+      {/* TODO: Put list of selected TMDBitems here */}
     </form>
   );
 };

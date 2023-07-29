@@ -1,17 +1,24 @@
 import React from 'react';
-import { MediaDownloadInfo } from '../../interfaces';
+import { QBTMediaDownloadInfo } from '../../types/qbt';
 import ProgressBar from '../ProgressBar/ProgressBar';
 interface MediaDisplayProps {
-  mediaDownloadInfo: MediaDownloadInfo
+  mediaDownloadInfo: QBTMediaDownloadInfo
 }
 const MediaDisplay: React.FC<MediaDisplayProps> = ({ mediaDownloadInfo }) => {
   const media = mediaDownloadInfo.media;
   const mediaInfo = media.media_info;
+  let eta_timestamp = 'N/A';
   // convert eta_in_seconds to hours, minutes, seconds format separated by colons
-  const etaHours = Math.floor(mediaDownloadInfo.eta_in_seconds / 3600);
-  const etaMinutes = Math.floor((mediaDownloadInfo.eta_in_seconds % 3600) / 60);
-  const etaSeconds = Math.floor((mediaDownloadInfo.eta_in_seconds % 3600) % 60);
-  const eta_timestamp = etaHours + ':' + etaMinutes + ':' + etaSeconds;
+  if (mediaDownloadInfo.eta_in_seconds !== null && mediaDownloadInfo.eta_in_seconds) {
+    console.log(mediaDownloadInfo.eta_in_seconds);
+    const etaHours = Math.floor(mediaDownloadInfo.eta_in_seconds / 3600);
+    const etaMinutes = Math.floor((mediaDownloadInfo.eta_in_seconds % 3600) / 60);
+    const etaSeconds = Math.floor((mediaDownloadInfo.eta_in_seconds % 3600) % 60);
+    eta_timestamp = etaHours + ':' + etaMinutes + ':' + etaSeconds + "(hh:mm:ss)";
+  }
+  // else {
+  //   const eta_timestamp = 'N/A';
+  // }
   return (
 
     // <div className="media-display" key={mediaDownloadInfo.hash}>
@@ -22,16 +29,17 @@ const MediaDisplay: React.FC<MediaDisplayProps> = ({ mediaDownloadInfo }) => {
         <h1>{media.requested_query}</h1>
       </div>
       <ProgressBar progress={mediaDownloadInfo.progress} />
-      <div className="download-stats">
-      
-        <p>
-          <strong>ETA:</strong> {eta_timestamp} (hh:mm:ss)
-        </p>
-        <p>
-          <strong>Download Speed:</strong> {Math.round(mediaDownloadInfo.download_speed_kbyte)} KB/s
-        </p>
+      {eta_timestamp !== "N/A" &&
+        <div className="download-stats">
+
+          <p>
+            <strong>ETA:</strong> {eta_timestamp}
+          </p>
+          <p>
+            <strong>Download Speed:</strong> {Math.round(mediaDownloadInfo.download_speed_kbyte)} KB/s
+          </p>
         </div>
-        
+      }
 
       {/* {mediaDownloadInfo.progress === 1 ? (
         <h3>Download Complete!</h3>
@@ -142,6 +150,11 @@ const MediaDisplay: React.FC<MediaDisplayProps> = ({ mediaDownloadInfo }) => {
             <strong>Resolution:</strong> {mediaInfo.resolution ? mediaInfo.resolution : 'N/A'}
           </p>
           <p>
+            <strong>Audio Channels:</strong> {mediaInfo.audio_channels ? mediaInfo.audio_channels : 'N/A'}
+          </p>
+        </div>
+        <div className="column">
+          <p>
             <strong>HDR:</strong> {mediaInfo.HDR === null ? 'N/A' : mediaInfo.HDR ? 'Yes' : 'No'}
           </p>
           <p>
@@ -149,9 +162,6 @@ const MediaDisplay: React.FC<MediaDisplayProps> = ({ mediaDownloadInfo }) => {
           </p>
         </div>
         <div className="column">
-          <p>
-            <strong>Audio Channels:</strong> {mediaInfo.audio_channels ? mediaInfo.audio_channels : 'N/A'}
-          </p>
           <p>
             <strong>Subtitle Languages:</strong> {mediaInfo.subtitle_languages === null ? 'N/A' : mediaInfo.subtitle_languages.join(', ')}
           </p>

@@ -1,7 +1,8 @@
 import React from 'react';
+import './UserDisplay.css';
 
 // refactor to be passed in a username
-const UserDisplay: React.FC<{ username: string }> = ({ username }) => {
+const UserDisplay: React.FC<{ username?: string | null }> = ({ username }) => {
 
 
   const handleLogout = () => {
@@ -18,10 +19,11 @@ const UserDisplay: React.FC<{ username: string }> = ({ username }) => {
   
 
   return (
-    <div style={{ position: 'fixed', top: '10px', right: '10px' }}>
+    // <div style={{ position: 'fixed', top: '10px', right: '10px' }}>
+    <div className='user-display'>
       {username && (
         <>
-          <h3>Logged in as: {username}</h3>
+          <p>Logged in as: {username}</p>
           <button onClick={handleLogout}>Logout</button>
         </>
       )}

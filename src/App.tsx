@@ -25,7 +25,7 @@
 import React from 'react';
 import Login from './components/Auth/Login/Login';
 import Main from './Main';
-import jwtDecode from 'jwt-decode';
+// import jwtDecode from 'jwt-decode';
 
 interface IToken {
   username: string;
@@ -36,16 +36,16 @@ const App: React.FC = () => {
 
   let username = "";
 
-  if (token) {
-    const decodedToken = jwtDecode<IToken>(token);
-    username = decodedToken.username; // Or however you named it in your payload
-  }
+  // if (token) {
+  //   const decodedToken = jwtDecode<IToken>(token);
+  //   username = decodedToken.username; // Or however you named it in your payload
+  // }
 
   if (!token) {
     return <Login />;
   }
   else {
-    return <Main token={token} username={username} />;
+    return <Main/>;
   }
 };
 

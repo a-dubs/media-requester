@@ -1,0 +1,9 @@
+.downloads-display-section {
+    padding-top: 20px;
+}
+
+.downloads-display-section .section-title {
+    text-align: center;   
+    font-size: 2em;
+    font-weight: 700;
+}

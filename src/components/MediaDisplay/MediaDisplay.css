@@ -82,7 +82,7 @@
 }
 
 .media-display .container .column {
-    flex: 1;
+    /* flex: 1; */
 }
 
 .media-display .container .column:not(:last-child) {
@@ -92,7 +92,7 @@
 .media-display .container p {
     margin: 5px 0;
     font-size: 0.9em;
-    
+    /* text-align: center; */
 }
 
 .media-display .container p strong {

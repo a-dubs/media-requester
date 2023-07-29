@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { MediaDownloadInfo } from '../../interfaces';
+import { QBTMediaDownloadInfo } from '../../types/qbt';
 import MediaDisplay from '../../components/MediaDisplay/MediaDisplay';
+import { REACT_APP_TORR_API_ENDPOINT } from '../../env';
+import "./DownloadsDisplay.css"
+
+const torrApiUrl = REACT_APP_TORR_API_ENDPOINT;
 
 const DownloadsDisplay = () => {
-  const [downloads, setDownloads] = useState<MediaDownloadInfo[]>([]);
+  const [downloads, setDownloads] = useState<QBTMediaDownloadInfo[]>([]);
 
   // load JWT and username from local storage
   const token = localStorage.getItem('token');
@@ -13,16 +17,18 @@ const DownloadsDisplay = () => {
     // Function to fetch data from the API
     const fetchDownloads = async () => {
       console.log("cached username: " + localStorage.getItem('username'))
+      let data = undefined
       try {
-        const response = await fetch('http://127.0.0.1:5000/api/' + username + '/get-progress-of-downloads', {
+        const response = await fetch(torrApiUrl + '/' + username + '/get-progress-of-downloads', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
-        const data = await response.json();
+        data = await response.json();
         console.log(data);
         setDownloads(data);
       } catch (error) {
+        console.log(data)
         console.error('Error fetching data:', error);
       }
     };
