@@ -31,6 +31,7 @@ const customModalStyles = {
 interface Props {
   item: Movie | Show;
   onSelect: (item: Movie | Show, selected: boolean) => void;
+  initiallySelected?: boolean;
 }
 
 function convertToHoursMins(minutes: number): string {
@@ -46,9 +47,9 @@ function formatDate(dateString: string) {
 
 
 // const ItemCard: React.FC<Props> = ({ item, onSelect, handleViewCollection, handleSelectCollection }) => {
-const ItemCard: React.FC<Props> = ({ item, onSelect }) => {
+const ItemCard: React.FC<Props> = ({ item, onSelect, initiallySelected }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(initiallySelected || false);
 
   const handleSelect = () => {
     setSelected(!selected);

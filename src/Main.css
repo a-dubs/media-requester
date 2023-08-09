@@ -7,11 +7,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.container {
+/* .container {
     width: 80%;
     margin: 0 auto;
     max-width: 1000px;
-}
+} */
 
 .mode-select {
     display: flex;

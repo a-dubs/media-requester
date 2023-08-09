@@ -10,12 +10,13 @@
     color: black;
     /* background-color: #94d6ff; */
 }
-
-.login-form input[type="text"], 
+/* 
+.login-form input[type="text"],
 .login-form input[type="password"] {
     margin-bottom: 20px;
     width: 250px;
-}
+} */
+
 /* 
 .page-header {
     width: 100% !important;
@@ -35,13 +36,14 @@
     margin-bottom: 50px;
 }
 
-.login-form button[type="submit"]  {
+.login-form button[type="submit"] {
     margin-top: 25px;
     color: whitesmoke;
     background-color: #333;
     padding: 10px 50px;
 }
-.login-form button[type="submit"]:hover  {
+
+.login-form button[type="submit"]:hover {
     padding: 10px 75px;
     background-color: #333;
     color: whitesmoke;
@@ -58,4 +60,74 @@
     border-radius: 20px;
     box-shadow: 0px 0px 5px lavenderblush;
 
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    /* background: #6a11cb; */
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)); */
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)) */
+}
+
+.form-section {
+    font-size: 1.8rem;
+}
+
+.custom-form input[type='text'],
+.custom-form input[type='password'] {
+    /* height: 1.5em; */
+    font-size: 1em;
+    padding: 0.5em;
+    background-color: inherit;
+    color: inherit;
+    /* width: 90%; */
+    /* margin: auto; */
+}
+
+.custom-form label {
+    line-height: 2;
+}
+
+.custom-form button[type='submit'] {
+    font-size: 1em;
+    padding: 0.5em 2em;
+    margin-top: 1em;
+}
+
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 20s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.form-section h1 {
+    /* position: absolute; */
+    font-size: 3.5em;
+    font-weight: 100;
+    /* width: 100%; */
+    text-shadow: 0px 0px 2px #5552;
+    line-height: 1.5;
+    margin: 1em 0;
+}
+
+.form-section h2 {
+    font-size: 1.4em;
+    line-height: 1.5;
 }

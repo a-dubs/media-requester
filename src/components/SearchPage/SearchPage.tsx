@@ -13,9 +13,10 @@ import { AxiosResponse } from 'axios';
 interface SearchProps {
   selectedItems: (Movie | Show)[];
   setSelectedItems: React.Dispatch<React.SetStateAction<(Movie | Show)[]>>;
+  handleSelect: (item: Movie | Show, selected: boolean) => void;
 }
 
-const SearchPage: React.FC<SearchProps> = ({ selectedItems, setSelectedItems }) => {
+const SearchPage: React.FC<SearchProps> = ({ selectedItems, setSelectedItems, handleSelect }) => {
   const [query, setQuery] = useState('');
   const [enteredQuery, setEnteredQuery] = useState('');
   const [results, setResults] = useState<(Movie | Show)[]>([]);
@@ -41,11 +42,7 @@ const SearchPage: React.FC<SearchProps> = ({ selectedItems, setSelectedItems }) 
     console.log(selectedItems.map(i => 'title' in i ? i.title : i.name));
   }, [selectedItems]);
 
-  const handleSelect = (item: Movie | Show, selected: boolean) => {
-    setSelectedItems(prevItems =>
-      selected ? [...prevItems, item] : prevItems.filter(i => i.id !== item.id)
-    );
-  };
+ 
 
   const parseTMDBSeason = (season: ShowSeason): ShowSeason => {
     return {

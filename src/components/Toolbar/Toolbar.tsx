@@ -12,9 +12,9 @@ const Toolbar: React.FC<ToolbarProps> = ({ currentPage, setCurrentPage }) => {
   return (
     <div>
       <div className="toolbar">
-        <button onClick={() => setCurrentPage('search')} className={currentPage === 'search' ? 'active' : ''}>Search</button>
-        <button onClick={() => setCurrentPage('request')} className={currentPage === 'request' ? 'active' : ''}>Request</button>
-        <button onClick={() => setCurrentPage('downloads')} className={currentPage === 'downloads' ? 'active' : ''}>Downloads</button>
+        <button onClick={() => setCurrentPage('search')} className={"btn btn-dark" + " " + (currentPage === 'search' ? 'active' : '')}>Search</button>
+        <button onClick={() => setCurrentPage('request')} className={"btn btn-dark" + " " + (currentPage === 'request' ? 'active' : '')}>Request</button>
+        <button onClick={() => setCurrentPage('downloads')} className={"btn btn-dark" + " " + (currentPage === 'downloads' ? 'active' : '')}>Downloads</button>
       </div>
     </div>
   );

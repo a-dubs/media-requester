@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Search from './components/SearchPage/SearchPage';
+import React, { useEffect, useState } from 'react';
+import SearchPage from './components/SearchPage/SearchPage';
 import './Main.css'
 import { TMDBItem, Movie, Show } from './types/tmdb';
 import './util.css'
@@ -13,12 +13,27 @@ const Main = () => {
   const [currentPage, setCurrentPage] = useState<'search' | 'request' | 'downloads'>('search');
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('username');
+
+  const handleSelect = (item: Movie | Show, selected: boolean) => {
+    console.log(selectedItems.includes(item))
+    if (selected && !selectedItems.includes(item) || !selected && selectedItems.includes(item)) {
+      setSelectedItems(prevItems =>
+        selected ? [...prevItems, item] : prevItems.filter(i => i.id !== item.id)
+      );
+    }
+    // else if (!selected && selectedItems.includes(item)) {
+    //   setSelectedItems(prevItems =>
+    //     selected ? [...prevItems, item] : prevItems.filter(i => i.id !== item.id)
+    //   );
+    // }
+  };
+
   const renderPageContent = () => {
     switch (currentPage) {
       case 'search':
-        return <Search selectedItems={selectedItems} setSelectedItems={setSelectedItems}/>;
+        return <SearchPage selectedItems={selectedItems} setSelectedItems={setSelectedItems} handleSelect={handleSelect}/>;
       case 'request':
-        return <RequestPage/>;
+        return <RequestPage selectedItems={selectedItems} setSelectedItems={setSelectedItems} handleSelect={handleSelect} />;
       case 'downloads':
         return <DownloadsPage/>;
     }
